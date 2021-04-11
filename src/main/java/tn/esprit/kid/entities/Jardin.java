@@ -1,5 +1,7 @@
 package tn.esprit.kid.entities;
 
-public class Jardin {
+import java.io.Serializable;
+
+public class Jardin implements Serializable {
 
 }
