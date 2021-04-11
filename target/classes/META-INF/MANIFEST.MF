@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: kidzone
 Implementation-Version: 1.0
-Built-By: meyyy
+Built-By: youss
 Implementation-Vendor-Id: tn.esprit.kid
-Build-Jdk: 1.8.0_281
+Build-Jdk: 1.8.0_60
 Implementation-URL: https://spring.io/projects/spring-boot/kidzone
 Created-By: Maven Integration for Eclipse
 
