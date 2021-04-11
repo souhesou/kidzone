@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.kid.entities.Enfant;
 import tn.esprit.kid.entities.Evenement;
 import tn.esprit.kid.repository.EvenementRepository;
 
@@ -20,6 +19,7 @@ public class EvenementService implements IEvenementService {
 		return iev.save(event) ;
 	}
 	
+	
 	@Override
 	public List<Evenement> afficherEvent() {
 		return (List<Evenement>) this.iev.findAll();
@@ -31,15 +31,23 @@ public class EvenementService implements IEvenementService {
 		iev.deleteById(idEvent);
 		
 	}
+	
+	
 	@Override
 	public Evenement updateEvent(int idEvent, Evenement event) {
-		// TODO Auto-generated method stub
-		return null;
+		Evenement evn = new Evenement ();
+		Optional<Evenement> evn2= this.iev.findById(idEvent);
+		if (evn2.isPresent()) {
+			Evenement finded = evn2.get();
+			finded = event;
+			evn = this.iev.save(finded);
+		}
+		return evn;
+		
 	}
 	@Override
 	public Optional<Evenement> getById(int idEvent) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.iev.findById(idEvent);
 	}
 	
 	

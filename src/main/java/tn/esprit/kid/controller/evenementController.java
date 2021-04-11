@@ -13,47 +13,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.kid.entities.Enfant;
-import tn.esprit.kid.services.IEnfantService;
+import tn.esprit.kid.entities.Evenement;
+import tn.esprit.kid.services.IEvenementService;
 
 @RestController
-@RequestMapping("/enfant")
-public class enfantController {
-
+@RequestMapping("/event")
+public class evenementController {
+	
 	@Autowired
-	IEnfantService ie;
+	IEvenementService iev;
 	
 	@PostMapping("/")
 	@ResponseBody
-	public Enfant addEnfant(@RequestBody Enfant enfant) {
-		Enfant enfant1 = ie.ajouterEnfant(enfant);
-		return enfant1;
+	public Evenement addEvent(@RequestBody Evenement event) {
+		Evenement event1 = iev.ajouterEvent(event);
+		return event1;
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseBody
-	public void removeEnfant(@PathVariable("id") int id) {
+	public void removeEvent(@PathVariable("id") int id) {
 
-		ie.remove(id);
+		iev.remove(id);
 	}
 	
 	@GetMapping("/")
-	public List<Enfant> getAllEnfant() {
-		return this.ie.afficherEnfant();
+	public List<Evenement> getAllEvent() {
+		return this.iev.afficherEvent();
 	}
+	
 
 	@PutMapping("/{id}")
 	@ResponseBody
-	public Enfant updateEnfant(@PathVariable int id, @RequestBody Enfant enfant) {
-		return ie.updateEnfant(id, enfant);
+	public Evenement updateEvent(@PathVariable int id, @RequestBody Evenement event) {
+		return iev.updateEvent(id, event);
 	}
 	
-	
-	@PostMapping("/affectationEV/{enfantsId}/{eventsId}")
-	@ResponseBody
-	public void  affecterEnfantEvent(@PathVariable("enfantsId") int enf, @PathVariable("eventsId") int evnt) {
-		ie.affecterEnfantEvent(enf, evnt);
-	}
 
-	
 }
