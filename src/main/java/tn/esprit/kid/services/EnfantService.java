@@ -1,6 +1,7 @@
 package tn.esprit.kid.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,6 @@ public class EnfantService implements IEnfantService {
 	enfantRepository ie;
 	@Override
 	public Enfant ajouterEnfant(Enfant enfant) {
-		// TODO Auto-generated method stub
 		return ie.save(enfant) ;
 	}
 
@@ -26,20 +26,32 @@ public class EnfantService implements IEnfantService {
 
 	@Override
 	public List<Enfant> afficherEnfant() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return (List<Enfant>) this.ie.findAll();
 	}
 
 	@Override
 	public void remove(int idEnfant) {
-		// TODO Auto-generated method stub
 		ie.deleteById(idEnfant);
 	}
 
 	@Override
-	public Enfant updateEnfantt(int idEnfant, Enfant enfant) {
-		// TODO Auto-generated method stub
-		return null;
+	public Enfant updateEnfant(int idEnfant, Enfant enfant) {
+		Enfant enf = new Enfant();
+		Optional<Enfant> enf2 = this.ie.findById(idEnfant);
+		if (enf2.isPresent()) {
+			Enfant finded = enf2.get();
+			finded = enfant;
+			enf = this.ie.save(finded);
+		}
+		return enf;
+		
 	}
+	@Override
+	public Optional<Enfant> getById(int idEnfant) {
+		// TODO Auto-generated method stub
+		return this.ie.findById(idEnfant);
+	}
+ 
 
 }

@@ -1,6 +1,7 @@
 package tn.esprit.kid.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import tn.esprit.kid.entities.Enfant;
 
@@ -11,13 +12,13 @@ public interface IEnfantService {
 
 	public void affecterEnfantEvent(int idEnfant, int idEvent);
 
-	List<Enfant> afficherEnfant();
+	public List<Enfant> afficherEnfant();
 
+	public void remove(int idEnfant);
 
-	void remove(int idEnfant);
-	Enfant updateEnfantt(int idEnfant, Enfant enfant);
+	public Enfant updateEnfant(int idEnfant, Enfant enfant);
 
-	//Optional<CommentPost> getById(int idpostcomment);
+	Optional<Enfant> getById(int idEnfant);
 
 
 	
