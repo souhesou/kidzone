@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: kidzone
 Implementation-Version: 1.0
-Built-By: ASUS
+Built-By: meyyy
 Implementation-Vendor-Id: tn.esprit.kid
 Build-Jdk: 1.8.0_281
 Implementation-URL: https://spring.io/projects/spring-boot/kidzone
