@@ -23,14 +23,14 @@ public class enfantController {
 	@Autowired
 	IEnfantService ie;
 	
-	@PostMapping("/")
+	@PostMapping("/add")
 	@ResponseBody
 	public Enfant addEnfant(@RequestBody Enfant enfant) {
 		Enfant enfant1 = ie.ajouterEnfant(enfant);
 		return enfant1;
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	@ResponseBody
 	public void removeEnfant(@PathVariable("id") int id) {
 
@@ -42,18 +42,9 @@ public class enfantController {
 		return this.ie.afficherEnfant();
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	@ResponseBody
 	public Enfant updateEnfant(@PathVariable int id, @RequestBody Enfant enfant) {
 		return ie.updateEnfant(id, enfant);
 	}
-	
-	
-	@PostMapping("/affectationEV/{enfantsId}/{eventsId}")
-	@ResponseBody
-	public void  affecterEnfantEvent(@PathVariable("enfantsId") int enf, @PathVariable("eventsId") int evnt) {
-		ie.affecterEnfantEvent(enf, evnt);
-	}
-
-	
 }
