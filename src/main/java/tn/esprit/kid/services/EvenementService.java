@@ -18,15 +18,7 @@ public class EvenementService implements IEvenementService {
 	public Evenement ajouterEvent(Evenement event) {
 		return iev.save(event);
 	}
-<<<<<<< HEAD
-
-=======
 	
-	
-<<<<<<< Updated upstream
-=======
->>>>>>> main
->>>>>>> Stashed changes
 	@Override
 	public List<Evenement> afficherEvent() {
 		return (List<Evenement>) this.iev.findAll();
@@ -37,17 +29,6 @@ public class EvenementService implements IEvenementService {
 		iev.deleteById(idEvent);
 
 	}
-<<<<<<< Updated upstream
-	
-	
-=======
-<<<<<<< HEAD
-
-=======
-	
-	
->>>>>>> main
->>>>>>> Stashed changes
 	@Override
 	public Evenement updateEvent(int idEvent, Evenement event) {
 		Evenement evn = new Evenement ();
