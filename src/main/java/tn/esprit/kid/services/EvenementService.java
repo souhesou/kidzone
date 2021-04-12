@@ -13,26 +13,41 @@ import tn.esprit.kid.repository.EvenementRepository;
 public class EvenementService implements IEvenementService {
 	@Autowired
 	EvenementRepository iev;
-	
+
 	@Override
 	public Evenement ajouterEvent(Evenement event) {
-		return iev.save(event) ;
+		return iev.save(event);
 	}
+<<<<<<< HEAD
+
+=======
 	
 	
+<<<<<<< Updated upstream
+=======
+>>>>>>> main
+>>>>>>> Stashed changes
 	@Override
 	public List<Evenement> afficherEvent() {
 		return (List<Evenement>) this.iev.findAll();
 	}
-	
-	
+
 	@Override
 	public void remove(int idEvent) {
 		iev.deleteById(idEvent);
-		
+
 	}
+<<<<<<< Updated upstream
 	
 	
+=======
+<<<<<<< HEAD
+
+=======
+	
+	
+>>>>>>> main
+>>>>>>> Stashed changes
 	@Override
 	public Evenement updateEvent(int idEvent, Evenement event) {
 		Evenement evn = new Evenement ();
@@ -45,11 +60,10 @@ public class EvenementService implements IEvenementService {
 		return evn;
 		
 	}
+
 	@Override
 	public Optional<Evenement> getById(int idEvent) {
 		return this.iev.findById(idEvent);
 	}
-	
-	
-	
+
 }
