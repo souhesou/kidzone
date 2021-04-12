@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,8 +28,19 @@ public class Enfant implements Serializable {
 	private int age;
 	private String niveau;
 	@JsonIgnore
+	@ManyToOne
+	private Parent parent ; 
+	public Parent getParent() {
+		return parent;
+	}
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
+	}
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "enfants", cascade = CascadeType.REMOVE)
 	private List<Evenement> events = new ArrayList<Evenement>();
+	
 	public Enfant(String nom, String prenom, int age, String niveau) {
 		super();
 		Nom = nom;
