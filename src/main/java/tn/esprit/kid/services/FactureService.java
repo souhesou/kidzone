@@ -8,12 +8,19 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.kid.entities.Facture;
 import tn.esprit.kid.repository.FactureRepository;
+import tn.esprit.kid.repository.RDVRepository;
+import tn.esprit.kid.repository.UserRepository;
 
 @Service
 public class FactureService implements IFactureService {
 
 	@Autowired
 	FactureRepository factureRepository;
+	@Autowired
+	RDVRepository rdvRespository;
+
+	@Autowired
+	UserRepository userRepository;
 
 	@Override
 	public int ajouterFacture(Facture facture) {
@@ -28,9 +35,15 @@ public class FactureService implements IFactureService {
 	}
 
 	@Override
-	public Facture modifierFacture(int id_facture, Facture facture) {
-		// TODO Auto-generated method stub
-		return null;
+	public Facture modifierFacture(int id_facture, Facture fact) {
+		Facture facture = new Facture();
+		Optional<Facture> fact2 = this.factureRepository.findById(id_facture);
+		if (fact2.isPresent()) {
+			Facture FACTS = fact2.get();
+			FACTS = fact;
+			facture = this.factureRepository.save(FACTS);
+		}
+		return facture;
 	}
 
 	public List<Facture> afficherAllFacture() {
@@ -38,8 +51,10 @@ public class FactureService implements IFactureService {
 		return (List<Facture>) this.factureRepository.findAll();
 	}
 
-	public List<String> getAllFactureIDByJardin(int id_jardin) {
-		return null;
+	public Optional<Facture> getAllFactureIDByJardin(int id_jardin) {
+		/* return (List<Facture>) this.factureRepository.findById(id_jardin); */
+
+		return (Optional<Facture>) this.factureRepository.findById(id_jardin);
 
 	}
 
