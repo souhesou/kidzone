@@ -25,7 +25,7 @@ public class FactureController {
 	IFactureService factureservice;
 	
 	
-/////////a verifier//////////////	
+//http://localhost:8081/SpringMVC/servlet/facture/retrieve-all-facture	
 	@GetMapping("/retrieve-all-facture")
 	@ResponseBody
 	public List<Facture> getFacture() {
@@ -35,7 +35,7 @@ public class FactureController {
 	
 ////////////////////////////
 	
-	// http://localhost:8081/SpringMVC/servlet/add-facture
+	// http://localhost:8081/SpringMVC/servlet/facture/add-facture
 		@PostMapping("/add-facture")
 		@ResponseBody
 		public int addFacture(@RequestBody Facture f) {
@@ -44,7 +44,7 @@ public class FactureController {
 		}
 	
 		
-	//http://localhost:8089/SpringMVC/servlet/remove-employe/{id_facture}
+	//http://localhost:8081/SpringMVC/servlet/facture/remove-employe/{id_facture}
 		  
 	      @DeleteMapping("/remove-facture/{id_facture}")
 		  @ResponseBody 
