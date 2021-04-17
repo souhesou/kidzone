@@ -1,9 +1,9 @@
 package tn.esprit.kid.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,20 +27,32 @@ public class Activitie implements Serializable {
 	private Date date;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
-	private List<Enfant> enfants = new ArrayList<Enfant>();
+	private Set<Enfant> enfant = new TreeSet<Enfant>();
 	
 	
-	public Activitie(String nom, String description, String type, Date date, List<Enfant> enfants) {
+
+
+	public Activitie(String nom, String description, String type, Date date) {
 		super();
 		Nom = nom;
 		this.description = description;
 		this.type = type;
 		this.date = date;
-		this.enfants = enfants;
 	}
 
 	public Activitie() {
 		super();
+	}
+
+	
+	
+	
+	public Set<Enfant> getEnfant() {
+		return enfant;
+	}
+
+	public void setEnfant(Set<Enfant> enfant) {
+		this.enfant = enfant;
 	}
 
 	public int getId() {
@@ -81,14 +93,6 @@ public class Activitie implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public List<Enfant> getEnfants() {
-		return enfants;
-	}
-
-	public void setEnfants(List<Enfant> enfants) {
-		this.enfants = enfants;
 	}
 
 	

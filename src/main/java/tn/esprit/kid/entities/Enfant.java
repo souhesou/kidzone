@@ -3,6 +3,8 @@ package tn.esprit.kid.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,9 +28,18 @@ public class Enfant implements Serializable {
 	private String Prenom;
 	private int age;
 	private String niveau;
+	
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "enfants", cascade = CascadeType.REMOVE)
 	private List<Evenement> events = new ArrayList<Evenement>();
+	
+	@JsonIgnore
+	//@LazyCollection(LazyCollectionOption.FALSE)
+	//@ManyToMany(mappedBy = "enfant", cascade = CascadeType.REMOVE)
+	
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "enfant", cascade = CascadeType.REMOVE)
+	private Set<Activitie> activites = new TreeSet<Activitie>();
+	
 	public Enfant(String nom, String prenom, int age, String niveau) {
 		super();
 		Nom = nom;
@@ -41,6 +52,15 @@ public class Enfant implements Serializable {
 		super();
 	}
 	
+
+	public Set<Activitie> getActivites() {
+		return activites;
+	}
+
+	public void setActivites(Set<Activitie> activites) {
+		this.activites = activites;
+	}
+
 	public List<Evenement> getEvents() {
 		return events;
 	}
