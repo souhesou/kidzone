@@ -22,6 +22,9 @@ public class EnfantService implements IEnfantService {
 	@Autowired
 	ActiviteRepository iac ;
 	
+	@Autowired
+	private EmailService service ; 
+	
 	@Override
 	public Enfant ajouterEnfant(Enfant enfant) {
 		return ie.save(enfant) ;
@@ -46,6 +49,8 @@ public class EnfantService implements IEnfantService {
 		Evenement event = iev.findById(idEvent).orElse(null);
 		event.getEnfants().add(enfant);
 		iev.save(event);	
+		service.sendSimpleEmail("souha.saada@esprit.tn", "votre enfant est inscrit à l'evenement avec succès", "event");
+
 	}
 
 	

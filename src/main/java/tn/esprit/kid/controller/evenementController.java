@@ -49,5 +49,12 @@ public class evenementController {
 		return iev.updateEvent(id, event);
 	}
 	
+	@GetMapping("/GetEventByName/")
+	 @ResponseBody
+	 public List<Evenement> FindEventByName() {
+		return iev.FindEventByName();
+		
+	}
+	
 
 }

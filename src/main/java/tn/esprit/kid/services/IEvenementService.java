@@ -17,4 +17,6 @@ public interface IEvenementService {
 	public Evenement updateEvent(int idEvent, Evenement event);
 
 	Optional<Evenement> getById(int idEvent);
+	
+	public List<Evenement> FindEventByName();
 }

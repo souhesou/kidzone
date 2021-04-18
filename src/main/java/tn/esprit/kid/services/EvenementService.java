@@ -13,11 +13,14 @@ import tn.esprit.kid.repository.EvenementRepository;
 public class EvenementService implements IEvenementService {
 	@Autowired
 	EvenementRepository iev;
+	
+	@Autowired
+	private EmailService service ; 
 
 	@Override
 	public Evenement ajouterEvent(Evenement event) {
-		return iev.save(event);
-	}
+	service.sendSimpleEmail("souha.saada@esprit.tn", "ur child event is starting now", "event");
+	return iev.save(event);}
 	
 	@Override
 	public List<Evenement> afficherEvent() {
@@ -47,4 +50,12 @@ public class EvenementService implements IEvenementService {
 		return this.iev.findById(idEvent);
 	}
 
+	@Override
+	public List<Evenement> FindEventByName() {
+		return iev.FindEventByName();
+	}
+
+	
+	
+	
 }
