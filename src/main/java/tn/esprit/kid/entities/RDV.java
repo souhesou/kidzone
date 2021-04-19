@@ -6,6 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 //YOUSSEF_BJ//
@@ -14,48 +15,45 @@ import javax.persistence.Table;
 @Table(name = "RDV")
 public class RDV implements Serializable {
 
-	private Jardin jardin;
+	@EmbeddedId
+    private RDVPK id;
+	
+	
+	
+	
+	@ManyToOne
+    @MapsId("JardinId")
+    @JoinColumn(name = "jardin_id")
+    private Jardin jardin;
+	
+	@ManyToOne
+    @MapsId("UserId")
+    @JoinColumn(name = "user_id")
 	private User user;
 
-	public RDVPK getRdvpk() {
-		return rdvpk;
+	public RDVPK getId() {
+		return id;
 	}
 
-	// ASSOCIATION//
-	// RDV <---> USER /YOUSSEF_BJ/
-	////////////////////////////////////////////////
-
-	@ManyToOne
-	@JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-	public User getUser() {
-		return user;
+	public void setId(RDVPK id) {
+		this.id = id;
 	}
 
-	// RDV <---> Jardin //YOUSSEF_BJ//
-	////////////////////////////////////////////////
-
-	@ManyToOne
-	@JoinColumn(name = "id_jardin", referencedColumnName = "id_jardin", insertable = false, updatable = false)
 	public Jardin getJardin() {
 		return jardin;
 	}
-
-	@EmbeddedId
-	private RDVPK rdvpk;
-
-	// GETTER-SETTER//
-	////////////////////////////////////////////////
 
 	public void setJardin(Jardin jardin) {
 		this.jardin = jardin;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public void setRdvpk(RDVPK rdvpk) {
-		this.rdvpk = rdvpk;
-	}
+	
 
 }
