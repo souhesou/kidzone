@@ -29,6 +29,7 @@ public class User implements Serializable {
 	private int id;
 	private String Nom;
 	private String Prenom;
+	private String Address;
 	private String userName;
 	private String Password;
 	@Enumerated(EnumType.STRING)
@@ -36,17 +37,13 @@ public class User implements Serializable {
 
 	///////// Many to many <----> USER and JARDIN//////
 	///////////////// RDV //////////////////////////////
-	@Transient
-	private List<RDV> rdvs;
-
-	@OneToMany(mappedBy = "id", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch = FetchType.EAGER)
-	public List<RDV> getRdvs() {
-		return rdvs;
-	}
+	
 	//////////////////////////////////////////////////////////
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Reclamation> Reclamations;
+	
+	
 
 	public List<Reclamation> getReclamations() {
 		return Reclamations;
@@ -111,5 +108,14 @@ public class User implements Serializable {
 	public UserDetails toCurrentUserDetails() {
 		return MyUserDetails.create(this);
 	}
+	
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
 
 }

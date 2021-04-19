@@ -15,28 +15,58 @@ import javax.persistence.Transient;
 
 @Entity
 public class Jardin implements Serializable {
-	// tester souhheeeee
-
-	/// Association One TO Many (Facture) YOUSSEF_BJ//
-	@OneToMany(mappedBy = "jardin")
-	private List<Facture> Facture;
-
-	////////////////////////////////////////////////
-	// many to many <----> jardin and user
-	@Transient
-	private List<RDV> rdvs;
-
-	@OneToMany(mappedBy = "id_jardin", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch = FetchType.EAGER)
-	public List<RDV> getRdvs() {
-		return rdvs;
+	private static final long serialVersionUID = 6783200708580771172L;
+	
+	public int getId() {
+		return id;
 	}
-	////////////////////////////////////////////////
 
-	// ATTRIBUT//
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
+	public List<Reclamation> getListReclamations() {
+		return ListReclamations;
+	}
+
+	public void setListReclamations(List<Reclamation> listReclamations) {
+		ListReclamations = listReclamations;
+	}
+
+	
+
+	public String getZone() {
+		return Zone;
+	}
+
+	public void setZone(String zone) {
+		Zone = zone;
+	}
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_jardin")
-	private int id_jardin;
+	private int id;
+	private String Nom ; 
+	public String getNom() {
+		return Nom;
+	}
+
+	public void setNom(String nom) {
+		Nom = nom;
+	}
+
+
+
+	private String Zone ; 
+	
+	
+	
+	@OneToMany(mappedBy = "jardin")
+	private List<Reclamation> ListReclamations;
+	
+
 
 }

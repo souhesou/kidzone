@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.kid.entities.Activitie;
 import tn.esprit.kid.entities.Enfant;
 import tn.esprit.kid.entities.Evenement;
+import tn.esprit.kid.repository.ActiviteRepository;
 import tn.esprit.kid.repository.EvenementRepository;
 import tn.esprit.kid.repository.enfantRepository;
 
@@ -17,7 +19,8 @@ public class EnfantService implements IEnfantService {
 	enfantRepository ie;
 	@Autowired
 	EvenementRepository iev;
-
+	@Autowired
+	ActiviteRepository iac ;
 	
 	@Override
 	public Enfant ajouterEnfant(Enfant enfant) {
@@ -26,6 +29,17 @@ public class EnfantService implements IEnfantService {
 
 	
 	
+	@Override
+	public void affecterEnfantActivite(int idEnfant, int idAct) {
+		Enfant enfant = ie.findById(idEnfant).orElse(null);
+		Activitie act = iac.findById(idAct).orElse(null);
+		act.getEnfant().add(enfant);
+		iac.save(act);
+		
+	}
+
+
+
 	@Override
 	public void affecterEnfantEvent(int idEnfant, int idEvent) {
 		Enfant enfant = ie.findById(idEnfant).orElse(null);
