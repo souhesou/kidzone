@@ -16,10 +16,11 @@ public class EvenementService implements IEvenementService {
 	
 	@Autowired
 	private EmailService service ; 
+	
 
 	@Override
 	public Evenement ajouterEvent(Evenement event) {
-	service.sendSimpleEmail("souha.saada@esprit.tn", "ur child event is starting now", "event");
+	//service.sendSimpleEmail("souha.saada@esprit.tn", "ur child event is starting now", "event");
 	return iev.save(event);}
 	
 	@Override
@@ -55,7 +56,12 @@ public class EvenementService implements IEvenementService {
 		return iev.FindEventByName();
 	}
 
+	/*
+	@Override
+	public List<Evenement> Search(String word) {
+		return (List<Evenement>) iev.searchEvent(word);
+	}
 	
-	
+	*/
 	
 }

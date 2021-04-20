@@ -22,6 +22,7 @@ public class evenementController {
 	
 	@Autowired
 	IEvenementService iev;
+
 	
 	@PostMapping("/")
 	@ResponseBody
@@ -56,5 +57,12 @@ public class evenementController {
 		
 	}
 	
-
+	/*
+	@GetMapping("/search/{word}")
+    @ResponseBody
+	public List<Evenement> getevent(@PathVariable("word") String word) {
+		
+		return iev.Search(word);
+	
+	}*/
 }

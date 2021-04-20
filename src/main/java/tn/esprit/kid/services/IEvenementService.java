@@ -19,4 +19,6 @@ public interface IEvenementService {
 	Optional<Evenement> getById(int idEvent);
 	
 	public List<Evenement> FindEventByName();
+	
+	//public List<Evenement> Search(String word);
 }

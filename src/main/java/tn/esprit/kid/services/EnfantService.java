@@ -49,7 +49,7 @@ public class EnfantService implements IEnfantService {
 		Evenement event = iev.findById(idEvent).orElse(null);
 		event.getEnfants().add(enfant);
 		iev.save(event);	
-		service.sendSimpleEmail("souha.saada@esprit.tn", "votre enfant est inscrit à l'evenement avec succès", "event");
+	   service.sendSimpleEmail("souha.saada@esprit.tn", "l'enfant "+enfant.getNom()+" est inscrit à l'evenement"+" "+event.getNom()+" avec succès qui aura lieu le "+" "+event.getDate()+" "+"à "+event.getLieu(), "event");
 
 	}
 
