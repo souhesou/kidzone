@@ -25,10 +25,10 @@ public class PublicationController {
 	@Autowired
 	IPublicationService ie;
 	
-	@PostMapping("/")
+	@PostMapping("/{idUser}")
 	@ResponseBody
-	public Publication addPublication(@RequestBody Publication pub) {
-		Publication pub1 = ie.ajouterPub(pub);
+	public Publication addPublication( @PathVariable(name="idUser") int idUser, @RequestBody Publication pub) {
+		Publication pub1 = ie.ajouterPub(pub, idUser);
 		return pub1;
 	}
 	
@@ -51,6 +51,25 @@ public class PublicationController {
 	}
 	
 	
+	@PostMapping("/like/add/{idPost}/{idUser}")
+	@ResponseBody
+	public void addLike(@PathVariable(name="idPost") int idPost, @PathVariable(name="idUser") int idUser) {
+		 ie.addLike(idPost, idUser);
+	}
+	@PostMapping("/dislike/add/{idPost}/{idUser}")
+	@ResponseBody
+	public void addDislike(@PathVariable(name="idPost") int idPost, @PathVariable(name="idUser") int idUser) {
+		 ie.addDislike(idPost, idUser);
+	}
 	
-	
+	@PostMapping("/like/remove/{idPost}/{idUser}")
+	@ResponseBody
+	public void removeLike(@PathVariable(name="idPost") int idPost, @PathVariable(name="idUser") int idUser) {
+		 ie.removeLike(idPost, idUser);
+	}
+	@PostMapping("/dislike/remove/{idPost}/{idUser}")
+	@ResponseBody
+	public void removeDislike(@PathVariable(name="idPost") int idPost, @PathVariable(name="idUser") int idUser) {
+		 ie.removeDislike(idPost, idUser);
+	}
 }
