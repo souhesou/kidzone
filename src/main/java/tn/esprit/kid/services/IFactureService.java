@@ -15,7 +15,7 @@ public interface IFactureService {
 
 	public List<Facture> afficherAllFacture();
 
-	public List<String> getAllFactureIDByJardin(int id_jardin);
+	public Optional<Facture> getAllFactureIDByJardin(int id_jardin);
 
 	Optional<Facture> getFactureById(int id_facture);
 

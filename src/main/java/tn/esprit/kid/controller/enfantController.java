@@ -55,5 +55,10 @@ public class enfantController {
 		ie.affecterEnfantEvent(enf, evnt);
 	}
 
-	
+	@PostMapping("/affectationAC/{enfantId}/{activitesId}")
+	@ResponseBody
+	public void  affecterEnfantAct(@PathVariable("enfantId") int enf, @PathVariable("activitesId") int act) {
+		ie.affecterEnfantActivite(enf, act);
+	}
+
 }
