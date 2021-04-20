@@ -85,6 +85,22 @@ public class EnfantService implements IEnfantService {
 	public Optional<Enfant> getById(int idEnfant) {
 		return this.ie.findById(idEnfant);
 	}
+
+
+
+	@Override
+	public List<Enfant> TriByName() {
+		return ie.TriByName();
+	}
+
+
+
+	@Override
+	public List<Enfant> Search(String word) {
+		return (List<Enfant>) ie.searchEnfant(word);
+	}
  
+	
+	
 
 }

@@ -19,5 +19,9 @@ public interface IEnfantService {
 	public Enfant updateEnfant(int idEnfant, Enfant enfant);
 
 	Optional<Enfant> getById(int idEnfant);
+	
+	public List<Enfant> TriByName();
+	public List<Enfant> Search(String word);
+	
 
 }

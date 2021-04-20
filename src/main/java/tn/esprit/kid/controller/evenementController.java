@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.kid.entities.Evenement;
+import tn.esprit.kid.repository.EvenementRepository;
 import tn.esprit.kid.services.IEvenementService;
 
 @RestController
@@ -22,6 +23,7 @@ public class evenementController {
 	
 	@Autowired
 	IEvenementService iev;
+	EvenementRepository en;
 
 	
 	@PostMapping("/")
@@ -57,12 +59,12 @@ public class evenementController {
 		
 	}
 	
-	/*
+	
 	@GetMapping("/search/{word}")
     @ResponseBody
-	public List<Evenement> getevent(@PathVariable("word") String word) {
+	public List<Evenement> recherche(@PathVariable("word") String word) {
 		
 		return iev.Search(word);
 	
-	}*/
+	}
 }

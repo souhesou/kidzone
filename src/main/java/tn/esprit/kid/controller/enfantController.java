@@ -60,5 +60,24 @@ public class enfantController {
 	public void  affecterEnfantAct(@PathVariable("enfantId") int enf, @PathVariable("activitesId") int act) {
 		ie.affecterEnfantActivite(enf, act);
 	}
+	
+	
+	@GetMapping("/TriByName/")
+	 @ResponseBody
+	 public List<Enfant> TriByName() {
+		return ie.TriByName();
+		
+	}
+	
+	
+	@GetMapping("/search/{word}")
+   @ResponseBody
+	public List<Enfant> recherche(@PathVariable("word") String word) {
+		
+		return ie.Search(word);
+	
+	}
+	
+	
 
 }

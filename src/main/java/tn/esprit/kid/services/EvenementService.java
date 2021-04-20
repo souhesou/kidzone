@@ -14,9 +14,6 @@ public class EvenementService implements IEvenementService {
 	@Autowired
 	EvenementRepository iev;
 	
-	@Autowired
-	private EmailService service ; 
-	
 
 	@Override
 	public Evenement ajouterEvent(Evenement event) {
@@ -56,12 +53,12 @@ public class EvenementService implements IEvenementService {
 		return iev.FindEventByName();
 	}
 
-	/*
+	
 	@Override
 	public List<Evenement> Search(String word) {
 		return (List<Evenement>) iev.searchEvent(word);
 	}
 	
-	*/
+	
 	
 }

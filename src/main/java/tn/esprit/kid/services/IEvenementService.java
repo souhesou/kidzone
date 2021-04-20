@@ -20,5 +20,5 @@ public interface IEvenementService {
 	
 	public List<Evenement> FindEventByName();
 	
-	//public List<Evenement> Search(String word);
+	public List<Evenement> Search(String word);
 }
