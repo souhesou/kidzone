@@ -44,16 +44,26 @@ public class EnfantService implements IEnfantService {
 
 
 	@Override
-	public void affecterEnfantEvent(int idEnfant, int idEvent) {
+	public void affecterEnfantEvent(int idEnfant, int idEvent) { 
+		//int i=0;
+		//System.out.println(i);
 		Enfant enfant = ie.findById(idEnfant).orElse(null);
 		Evenement event = iev.findById(idEvent).orElse(null);
+	//	System.out.println(ie.counting(idEvent));
+
+		/*if (ie.counting(idEvent)<event.getNbrParticipant()){
+			System.out.println(ie.counting(idEvent));*/
 		event.getEnfants().add(enfant);
 		iev.save(event);	
+		//System.out.println(event.getNbrParticipant());
 	   service.sendSimpleEmail("souha.saada@esprit.tn", "l'enfant "+enfant.getNom()+" est inscrit à l'evenement"+" "+event.getNom()+" avec succès qui aura lieu le "+" "+event.getDate()+" "+"à "+event.getLieu(), "event");
-
-	}
-
-	
+		//}
+	/*	 else {
+			System.out.println("désolé ! Cet evenement est complet ! Veuillez attendre le prochaine événement.");
+		}*/
+		
+		}
+	   
 	
 	@Override
 	public List<Enfant> afficherEnfant() {
