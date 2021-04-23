@@ -51,16 +51,16 @@ public class EnfantService implements IEnfantService {
 		Evenement event = iev.findById(idEvent).orElse(null);
 	//	System.out.println(ie.counting(idEvent));
 
-		/*if (ie.counting(idEvent)<event.getNbrParticipant()){
-			System.out.println(ie.counting(idEvent));*/
+		if (ie.counting(idEvent)<event.getNbrParticipant()){
+			System.out.println(ie.counting(idEvent));
 		event.getEnfants().add(enfant);
 		iev.save(event);	
 		//System.out.println(event.getNbrParticipant());
-	   service.sendSimpleEmail("souha.saada@esprit.tn", "l'enfant "+enfant.getNom()+" est inscrit à l'evenement"+" "+event.getNom()+" avec succès qui aura lieu le "+" "+event.getDate()+" "+"à "+event.getLieu(), "event");
-		//}
-	/*	 else {
+	   //service.sendSimpleEmail("souha.saada@esprit.tn", "l'enfant "+enfant.getNom()+" est inscrit à l'evenement"+" "+event.getNom()+" avec succès qui aura lieu le "+" "+event.getDate()+" "+"à "+event.getLieu(), "event");
+		}
+	 else {
 			System.out.println("désolé ! Cet evenement est complet ! Veuillez attendre le prochaine événement.");
-		}*/
+		}
 		
 		}
 	   

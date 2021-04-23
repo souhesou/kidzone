@@ -24,7 +24,7 @@ public interface enfantRepository extends CrudRepository<Enfant, Integer> {
 	public List<Enfant> searchEnfant(@Param("word") String word);
 	
 	
-	@Query(value="SELECT COUNT(events_id) FROM evenement_enfants",nativeQuery =true)
+	@Query(value="SELECT COUNT(events_id) FROM evenement_enfants where events_id =:idEvent",nativeQuery =true)
 	public int counting(@Param("idEvent") int idEvent);
 	
 }
