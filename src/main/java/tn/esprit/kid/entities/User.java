@@ -35,7 +35,7 @@ public class User implements Serializable {
 
 	///////// Many to many <----> USER and JARDIN//////
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
 	private List<RDV> rdvs;
 
 	//////////////////////////////////////////////////////////
