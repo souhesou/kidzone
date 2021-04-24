@@ -8,14 +8,12 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,7 +24,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 6783200708580771172L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id_user;
 	private String Nom;
 	private String Prenom;
 	private String Address;
@@ -36,7 +34,14 @@ public class User implements Serializable {
 	private Roles Role;
 
 	///////// Many to many <----> USER and JARDIN//////
-	///////////////// RDV //////////////////////////////
+	
+	
+	
+	@OneToMany(mappedBy= "user")
+	private List<RDV> rdvs;
+
+	
+	
 	
 	//////////////////////////////////////////////////////////
 
@@ -58,11 +63,11 @@ public class User implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return id_user;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.id_user = id;
 	}
 
 	public String getNom() {
@@ -116,6 +121,8 @@ public class User implements Serializable {
 	public void setAddress(String address) {
 		Address = address;
 	}
+
+
 
 
 }

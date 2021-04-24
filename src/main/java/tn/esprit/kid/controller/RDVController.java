@@ -1,6 +1,7 @@
 package tn.esprit.kid.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,10 +27,9 @@ public class RDVController {
 	IFactureService factureservice;
 	
 	
+
 	
-	
-	
-//http://localhost:8081/SpringMVC/servlet/rdv/retrieve-all-rdv
+//http://localhost:8081/retrieve-all-rdv
 @GetMapping("/retrieve-all-rdv")
 @ResponseBody
 public List<RDV> getRdvs() {
@@ -37,6 +37,13 @@ public List<RDV> getRdvs() {
 	return list;
 }	
 
+//http://localhost:8081/SpringMVC/servlet/rdv/retrieve-rdv/{idPK}
+@GetMapping("/retrieve-rdv/{idPK}")
+@ResponseBody
+public Optional<RDV> getRdvsbyid(@PathVariable("idPK") int idPK) {
+	Optional<RDV> list = rdvservice.getRDVById(idPK);
+			return list;
+}
 
 ////////////////////////////
 

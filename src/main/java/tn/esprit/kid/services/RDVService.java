@@ -1,5 +1,6 @@
 package tn.esprit.kid.services;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -51,12 +52,16 @@ public class RDVService implements IRDVService {
 
 	@Override
 	public List<RDV> afficherAllRDV() {
-		return (List<RDV>) this.rdvRespository.findAll();
+		
+		//return (List<RDV>) this.rdvRespository.findAll();
+		//return rdvRespository.getClass().getFields();
+		
+		return (List<RDV>) rdvRespository.findAll();
 	}
 
 	@Override
-	public Optional<RDV> getRDVById(int id_RDV) {
-		return this.rdvRespository.findById(id_RDV);
+	public Optional<RDV> getRDVById(int idPK) {
+		return this.rdvRespository.findById(idPK);
 	}
 
 	@Override
