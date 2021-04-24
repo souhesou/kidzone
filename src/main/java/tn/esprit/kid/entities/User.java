@@ -17,8 +17,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TYPE")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name = "TYPE")
 @Entity
 public class User implements Serializable {
 	private static final long serialVersionUID = 6783200708580771172L;
@@ -34,21 +34,14 @@ public class User implements Serializable {
 	private Roles Role;
 
 	///////// Many to many <----> USER and JARDIN//////
-	
-	
-	
-	@OneToMany(mappedBy= "user")
+
+	@OneToMany(mappedBy = "user")
 	private List<RDV> rdvs;
 
-	
-	
-	
 	//////////////////////////////////////////////////////////
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Reclamation> Reclamations;
-	
-	
 
 	public List<Reclamation> getReclamations() {
 		return Reclamations;
@@ -113,7 +106,7 @@ public class User implements Serializable {
 	public UserDetails toCurrentUserDetails() {
 		return MyUserDetails.create(this);
 	}
-	
+
 	public String getAddress() {
 		return Address;
 	}
@@ -121,8 +114,5 @@ public class User implements Serializable {
 	public void setAddress(String address) {
 		Address = address;
 	}
-
-
-
 
 }
