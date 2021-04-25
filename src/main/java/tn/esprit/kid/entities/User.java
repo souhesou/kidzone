@@ -35,10 +35,16 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Roles Role;
 
-	///////// Many to many <----> USER and JARDIN//////
-	///////////////// RDV //////////////////////////////
-	
-	//////////////////////////////////////////////////////////
+///////// Many to many <----> USER and JARDIN//////
+///////////////// RDV //////////////////////////////
+@Transient
+private List<RDV> rdvs;
+
+@OneToMany(mappedBy = "id", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch = FetchType.EAGER)
+public List<RDV> getRdvs() {
+	return rdvs;
+}
+//////////////////////////////////////////////////////////
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Reclamation> Reclamations;
