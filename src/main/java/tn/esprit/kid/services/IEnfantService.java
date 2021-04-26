@@ -7,10 +7,10 @@ import tn.esprit.kid.entities.Enfant;
 
 public interface IEnfantService {
 
-
 	public Enfant ajouterEnfant(Enfant enfant);
 
 	public void affecterEnfantEvent(int idEnfant, int idEvent);
+	public void affecterEnfantActivite(int idEnfant, int idAct);
 
 	public List<Enfant> afficherEnfant();
 
@@ -20,6 +20,4 @@ public interface IEnfantService {
 
 	Optional<Enfant> getById(int idEnfant);
 
-
-	
 }

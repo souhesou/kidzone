@@ -3,6 +3,7 @@ package tn.esprit.kid.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +34,21 @@ public class Reclamation implements Serializable {
 	@JsonIgnore
 	@ManyToOne
 	private User user ;
+	
+	
+	@JsonIgnore
+	@ManyToOne
+	private Jardin jardin ;
+
+
+	public Jardin getJardin() {
+		return jardin;
+	}
+
+
+	public void setJardin(Jardin jardin) {
+		this.jardin = jardin;
+	}
 
 
 	public int getId() {

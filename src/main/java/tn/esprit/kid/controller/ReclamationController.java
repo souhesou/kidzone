@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.kid.entities.Reclamation;
 import tn.esprit.kid.services.ReclamationService;
+import tn.esprit.kid.services.UserService;
 
 @RestController
 @RequestMapping("/reclamation")
@@ -19,6 +20,9 @@ public class ReclamationController {
 	
 	@Autowired
 	private ReclamationService service ; 
+	
+	@Autowired
+	private UserService service2 ; 
 	
 	@RequestMapping("/")
 	public List<Reclamation>GetAllReclamations(){
@@ -51,6 +55,16 @@ public class ReclamationController {
 	public void DeleteEmploye(@PathVariable int id ) {
 		
 		service.DeleteReclamation(id);
+		
+	}
+	
+	@RequestMapping("/test/{id}")
+	public List<Reclamation>test(@PathVariable int id){
+		//service.suggestion();
+		
+		service2.findBestJardinForUserByAddress("megrine");
+		
+		return service.GetBadReclamationByJardin(id);
 		
 	}
 	
