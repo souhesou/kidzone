@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/template/template.xhtml">
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content">
+<h:panelGroup columns="2"><h:form><table>
+<tr><td><h:outputText value="Nom"></h:outputText></td><td>
+<h:inputText value="#{eventController.nom}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Date"></h:outputText></td>
+<td><h:inputSecret value="#{eventController.date}"></h:inputSecret></td></tr>
+<tr><td><h:outputText value="Description"></h:outputText></td>
+<td><h:inputText value="#{eventController.description}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Lieu"></h:outputText></td>
+<td><h:inputText value="#{eventController.lieu}"></h:inputText></td></tr>
+<tr><td><h:outputText value="Nombre de Participant"></h:outputText></td>
+<td><h:inputText value="#{eventController.nbrParticipant}"></h:inputText></td></tr>
+<tr><td colspan="2"> <h:commandButton value="Ajouter Evenement"
+action="#{eventController.addEvent()}" /></td></tr>
+<tr><td colspan="2"> <h:commandButton value="Mettre A jour un evenement"
+action="#{eventController.updateEvent(evenement.id)}"/></td></tr>
+</table></h:form></h:panelGroup>
+<h:panelGroup columns="2">
+<h:form>
+<h:dataTable value="#{eventController.events}" var="evenement" border="1">
+<h:column><f:facet name="header"><h:outputText value="Nom" /></f:facet>
+<h:outputText value="#{evenement.nom}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Date" /></f:facet>
+<h:outputText value="#{evenement.date}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Description" /></f:facet>
+<h:outputText value="#{evenement.description}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Lieu" /></f:facet>
+<h:outputText value="#{evenement.lieu}" /></h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton action="#{eventController.removeEvent(evenement.id)}"
+value="Supprimer" />
+<h:commandButton action="#{eventController.displayEvent(Evenement)}"
+value="Afficher" />
+
+</h:column>
+</h:dataTable>
+</h:form>
+</h:panelGroup>
+</ui:define>
+</ui:composition>

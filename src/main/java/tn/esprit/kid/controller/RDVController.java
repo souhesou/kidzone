@@ -25,11 +25,11 @@ public class RDVController {
 	@Autowired
 	IFactureService factureservice;
 	
+	@Autowired
 	
 	
 	
-	
-//http://localhost:8081/SpringMVC/servlet/rdv/retrieve-all-rdv
+//////////////////////	
 @GetMapping("/retrieve-all-rdv")
 @ResponseBody
 public List<RDV> getRdvs() {
@@ -40,7 +40,7 @@ public List<RDV> getRdvs() {
 
 ////////////////////////////
 
-// http://localhost:8081/SpringMVC/servlet/rdv/add-rdv
+// http://localhost:8081/SpringMVC/servlet/add-facture
 @PostMapping("/add-rdv")
 @ResponseBody
 public int addRDV(@RequestBody RDV R) {
@@ -48,9 +48,9 @@ return rdvservice.ajouterRDV(R);
 }
 
 
-//http://localhost:8081/SpringMVC/servlet/rdv/remove-rdv/{id_rdv}
+//http://localhost:8089/SpringMVC/servlet/remove-facture/{id_rdv}
 
-@DeleteMapping("/remove-rdv/{id_rdv}")
+@DeleteMapping("/remove-facture/{id_rdv}")
 @ResponseBody 
 public void supprimerRDV(@PathVariable("id_rdv") int id_rdv) 
 
